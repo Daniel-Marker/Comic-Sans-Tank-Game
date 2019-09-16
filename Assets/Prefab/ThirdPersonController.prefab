@@ -76,7 +76,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphereRadius: 5
-  sensitivity: 2
+  horizontalSensitivity: 4
+  verticalSensitivity: 2
+  maxVerticalAngle: 60
+  minVerticalAngle: 60
 --- !u!1 &1941996130184971960
 GameObject:
   m_ObjectHideFlags: 0
