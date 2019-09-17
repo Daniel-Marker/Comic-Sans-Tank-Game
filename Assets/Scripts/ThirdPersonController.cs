@@ -7,14 +7,18 @@ public class ThirdPersonController : MonoBehaviour
     //todo get movement working
     //head and cannon will follow camera movement, body will move based on WASD input
 
+    //todo, add a horizontal max and min angle
+
     [SerializeField] float sphereRadius = 2f;
     [SerializeField] [Range(0f, 5f)] float horizontalSensitivity = 1f;
     [SerializeField] [Range(0f, 5f)] float verticalSensitivity = 1f;
     [SerializeField] float maxVerticalAngle = 60f;
     [SerializeField] float minVerticalAngle = 60f;
     [SerializeField] GameObject player;
-    [SerializeField] float maxDistFromGround = 5f;
-    [SerializeField] float clipJumpAngle = 5f;
+    [SerializeField] GameObject cannon;
+    [SerializeField] GameObject tankHead;
+    [SerializeField] GameObject tankBody;
+    [SerializeField] float cannonOffset = 20f;
     float sphereAngleX = 60f;
     float sphereAngleY = 180f;
     Camera camera;
@@ -34,17 +38,39 @@ public class ThirdPersonController : MonoBehaviour
     {
         float rawVertical = Input.GetAxis("Vertical");
         float rawHorizontal = Input.GetAxis("Horizontal");
+        CameraStuff();
 
+        RotateHeadAndCannon();
+
+    }
+
+    private void RotateHeadAndCannon()
+    {
+        float headAngle = sphereAngleY + 180;
+        tankHead.transform.rotation = Quaternion.Euler(90, headAngle, 0);
+
+        float cannonAngle = -sphereAngleX - cannonOffset;
+        Quaternion oldRotation = cannon.transform.rotation;
+        Vector3 oldRotationVector = oldRotation.eulerAngles;
+        oldRotationVector.x = cannonAngle;
+        cannon.transform.rotation = Quaternion.Euler(oldRotationVector);
+    }
+
+    private void CameraStuff()
+    {
         float rawMouseX = Input.GetAxis("Mouse X");
         float rawMouseY = Input.GetAxis("Mouse Y");
 
-        if (onGround) {
-            if (rawMouseY < 0) {
+        if (onGround)
+        {
+            if (rawMouseY < 0)
+            {
                 rawMouseY = 0;
             }
         }
 
-        if (againstWallForward) {
+        if (againstWallForward)
+        {
             if (sphereAngleY > 180)
             {
                 if (rawMouseX > 0)
@@ -52,14 +78,17 @@ public class ThirdPersonController : MonoBehaviour
                     rawMouseX = 0;
                 }
             }
-            else {
-                if (rawMouseX < 0) {
+            else
+            {
+                if (rawMouseX < 0)
+                {
                     rawMouseX = 0;
                 }
             }
         }
 
-        if (againstWallBackward) {
+        if (againstWallBackward)
+        {
             if (sphereAngleY > 180)
             {
                 if (rawMouseX < 0)
@@ -95,7 +124,8 @@ public class ThirdPersonController : MonoBehaviour
 
         Vector3 angles = camera.transform.rotation.eulerAngles;
 
-        if (angles.x > minVerticalAngle && angles.x < 360 - maxVerticalAngle) {
+        if (angles.x > minVerticalAngle && angles.x < 360 - maxVerticalAngle)
+        {
             if (angles.x < 180f)
             {
                 angles.x = minVerticalAngle;
@@ -104,7 +134,8 @@ public class ThirdPersonController : MonoBehaviour
                 newPos.y = sphereRadius * Mathf.Cos(Mathf.Deg2Rad * sphereAngleX);
                 newPos.z = sphereRadius * Mathf.Sin(Mathf.Deg2Rad * sphereAngleX) * Mathf.Cos(Mathf.Deg2Rad * sphereAngleY);
             }
-            else {
+            else
+            {
                 angles.x = 360 - maxVerticalAngle;
                 sphereAngleX = oldAngleX;
                 newPos.x = sphereRadius * Mathf.Sin(Mathf.Deg2Rad * sphereAngleX) * Mathf.Sin(Mathf.Deg2Rad * sphereAngleY);
@@ -120,7 +151,8 @@ public class ThirdPersonController : MonoBehaviour
         {
             onGround = true;
         }
-        else {
+        else
+        {
             onGround = false;
         }
 
@@ -128,7 +160,8 @@ public class ThirdPersonController : MonoBehaviour
         {
             againstWallForward = true;
         }
-        else {
+        else
+        {
             againstWallForward = false;
         }
 
@@ -136,7 +169,8 @@ public class ThirdPersonController : MonoBehaviour
         {
             againstWallBackward = true;
         }
-        else {
+        else
+        {
             againstWallBackward = false;
         }
     }
@@ -147,7 +181,7 @@ public class ThirdPersonController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sphereRadius);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(Camera.main.transform.position, (Camera.main.transform.position - maxDistFromGround*Vector3.up));
+        Gizmos.DrawLine(Camera.main.transform.position, (Camera.main.transform.position - Vector3.up));
 
         Gizmos.color = Color.green;
         Gizmos.DrawLine(Camera.main.transform.position, Camera.main.transform.position + Vector3.forward);
