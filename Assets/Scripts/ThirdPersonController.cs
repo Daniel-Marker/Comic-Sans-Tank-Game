@@ -20,6 +20,8 @@ public class ThirdPersonController : MonoBehaviour
     Camera camera;
     Vector3 initCameraPos;
     bool onGround = false;
+    bool againstWallForward = false;
+    bool againstWallBackward = false;
 
     void Start()
     {
@@ -39,6 +41,38 @@ public class ThirdPersonController : MonoBehaviour
         if (onGround) {
             if (rawMouseY < 0) {
                 rawMouseY = 0;
+            }
+        }
+
+        if (againstWallForward) {
+            if (sphereAngleY > 180)
+            {
+                if (rawMouseX > 0)
+                {
+                    rawMouseX = 0;
+                }
+            }
+            else {
+                if (rawMouseX < 0) {
+                    rawMouseX = 0;
+                }
+            }
+        }
+
+        if (againstWallBackward) {
+            if (sphereAngleY > 180)
+            {
+                if (rawMouseX < 0)
+                {
+                    rawMouseX = 0;
+                }
+            }
+            else
+            {
+                if (rawMouseX > 0)
+                {
+                    rawMouseX = 0;
+                }
             }
         }
 
@@ -89,6 +123,22 @@ public class ThirdPersonController : MonoBehaviour
         else {
             onGround = false;
         }
+
+        if (Physics.Linecast(oldPos, camera.transform.position + Vector3.forward, out hit))
+        {
+            againstWallForward = true;
+        }
+        else {
+            againstWallForward = false;
+        }
+
+        if (Physics.Linecast(oldPos, camera.transform.position - Vector3.forward))
+        {
+            againstWallBackward = true;
+        }
+        else {
+            againstWallBackward = false;
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -98,5 +148,8 @@ public class ThirdPersonController : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawLine(Camera.main.transform.position, (Camera.main.transform.position - maxDistFromGround*Vector3.up));
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(Camera.main.transform.position, Camera.main.transform.position + Vector3.forward);
     }
 }
