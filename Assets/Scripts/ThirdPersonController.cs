@@ -9,16 +9,23 @@ public class ThirdPersonController : MonoBehaviour
 
     //todo, add a horizontal max and min angle
 
+    [Header("Camera settings")]
     [SerializeField] float sphereRadius = 2f;
     [SerializeField] [Range(0f, 5f)] float horizontalSensitivity = 1f;
     [SerializeField] [Range(0f, 5f)] float verticalSensitivity = 1f;
     [SerializeField] float maxVerticalAngle = 60f;
     [SerializeField] float minVerticalAngle = 60f;
-    [SerializeField] GameObject player;
+
+    [Header("Aiming settings")]
     [SerializeField] GameObject cannon;
     [SerializeField] GameObject tankHead;
     [SerializeField] GameObject tankBody;
-    [SerializeField] float cannonOffset = 20f;
+    [SerializeField] float cannonOffsetAngle = 20f;
+
+    [Header("Movement settings")]
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float rotateSpeed = 5f;
+
     float sphereAngleX = 60f;
     float sphereAngleY = 180f;
     Camera camera;
@@ -39,8 +46,13 @@ public class ThirdPersonController : MonoBehaviour
         float rawVertical = Input.GetAxis("Vertical");
         float rawHorizontal = Input.GetAxis("Horizontal");
         CameraStuff();
-
         RotateHeadAndCannon();
+
+        Vector3 movement = new Vector3(0,0,rawVertical*moveSpeed*Time.deltaTime);
+        transform.Translate(movement);
+
+        Vector3 rotation = new Vector3(0, rawHorizontal * rotateSpeed * Time.deltaTime, 0);
+        transform.Rotate(rotation);
 
     }
 
@@ -49,7 +61,7 @@ public class ThirdPersonController : MonoBehaviour
         float headAngle = sphereAngleY + 180;
         tankHead.transform.rotation = Quaternion.Euler(90, headAngle, 0);
 
-        float cannonAngle = -sphereAngleX - cannonOffset;
+        float cannonAngle = -sphereAngleX - cannonOffsetAngle;
         Quaternion oldRotation = cannon.transform.rotation;
         Vector3 oldRotationVector = oldRotation.eulerAngles;
         oldRotationVector.x = cannonAngle;
