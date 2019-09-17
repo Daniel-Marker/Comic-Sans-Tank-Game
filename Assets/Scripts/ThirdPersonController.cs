@@ -17,6 +17,7 @@ public class ThirdPersonController : MonoBehaviour
     float sphereAngleY = 180f;
     Camera camera;
     Vector3 initCameraPos;
+    bool onGround = false;
 
     void Start()
     {
@@ -32,6 +33,12 @@ public class ThirdPersonController : MonoBehaviour
 
         float rawMouseX = Input.GetAxis("Mouse X");
         float rawMouseY = Input.GetAxis("Mouse Y");
+
+        if (onGround) {
+            if (rawMouseY < 0) {
+                rawMouseY = 0;
+            }
+        }
 
         //using mouseX and mouseY, move the camera about a sphere around the player with radius sphereRadius
         Vector3 newPos = new Vector3();
@@ -72,17 +79,18 @@ public class ThirdPersonController : MonoBehaviour
         camera.transform.position = newPos;
         camera.transform.rotation = Quaternion.Euler(angles);
 
-        //Debug.DrawLine(camera.transform.position, player.transform.position, Color.red);
-
         RaycastHit hit = new RaycastHit();
-        if (Physics.Linecast(oldPos, camera.transform.position, out hit)) {
+        if (Physics.Linecast(oldPos, camera.transform.position, out hit))
+        {
             camera.transform.position = oldPos;
+            onGround = true;
             //currently only just lets the camera into the ground
             //so need to make the angle of the linecast slightly steeper
+            //also doesn't work with ceilings, so need to fix for that
 
-            //also need to ignore downwards camera movement when camera is in this position
-
-            //Debug.DrawLine(camera.transform.position, hit.point, Color.blue);
+        }
+        else {
+            onGround = false;
         }
     }
 
