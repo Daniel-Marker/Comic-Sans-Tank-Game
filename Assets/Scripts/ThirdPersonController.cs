@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThirdPersonController : MonoBehaviour
 {
     //todo, clip camera movement if the camera would enter an object by moving
-
+    //camera can't move vertically through walls, but can move horizontally
 
     [SerializeField] float sphereRadius = 2f;
     [SerializeField] [Range(0f, 5f)] float horizontalSensitivity = 1f;
@@ -13,6 +13,8 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] float maxVerticalAngle = 60f;
     [SerializeField] float minVerticalAngle = 60f;
     [SerializeField] GameObject player;
+    [SerializeField] float maxDistFromGround = 5f;
+    [SerializeField] float clipJumpAngle = 5f;
     float sphereAngleX = 60f;
     float sphereAngleY = 180f;
     Camera camera;
@@ -80,14 +82,9 @@ public class ThirdPersonController : MonoBehaviour
         camera.transform.rotation = Quaternion.Euler(angles);
 
         RaycastHit hit = new RaycastHit();
-        if (Physics.Linecast(oldPos, camera.transform.position, out hit))
+        if (Physics.Linecast(oldPos, camera.transform.position - Vector3.up, out hit))
         {
-            camera.transform.position = oldPos;
             onGround = true;
-            //currently only just lets the camera into the ground
-            //so need to make the angle of the linecast slightly steeper
-            //also doesn't work with ceilings, so need to fix for that
-
         }
         else {
             onGround = false;
@@ -98,5 +95,8 @@ public class ThirdPersonController : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, sphereRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(Camera.main.transform.position, (Camera.main.transform.position - maxDistFromGround*Vector3.up));
     }
 }

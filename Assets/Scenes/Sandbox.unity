@@ -549,7 +549,7 @@ PrefabInstance:
     - target: {fileID: 1941996130125398090, guid: 28a31468955ca6d4f8b2c6cb0311ca7c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.56
+      value: 2.58
       objectReference: {fileID: 0}
     - target: {fileID: 1941996130125398090, guid: 28a31468955ca6d4f8b2c6cb0311ca7c,
         type: 3}
@@ -595,5 +595,13 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1281335131}
+    - target: {fileID: 2113528661, guid: 28a31468955ca6d4f8b2c6cb0311ca7c, type: 3}
+      propertyPath: minVerticalAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113528661, guid: 28a31468955ca6d4f8b2c6cb0311ca7c, type: 3}
+      propertyPath: clipJumpAngle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a31468955ca6d4f8b2c6cb0311ca7c, type: 3}
