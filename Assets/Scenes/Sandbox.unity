@@ -212,12 +212,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &1281335131 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5042078146479570891, guid: 28a31468955ca6d4f8b2c6cb0311ca7c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1941996128437740318}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1324694847
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,16 +678,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2113528661, guid: 28a31468955ca6d4f8b2c6cb0311ca7c, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1281335131}
-    - target: {fileID: 2113528661, guid: 28a31468955ca6d4f8b2c6cb0311ca7c, type: 3}
-      propertyPath: minVerticalAngle
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2113528661, guid: 28a31468955ca6d4f8b2c6cb0311ca7c, type: 3}
-      propertyPath: clipJumpAngle
-      value: 1
+      propertyPath: sphereRadius
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a31468955ca6d4f8b2c6cb0311ca7c, type: 3}

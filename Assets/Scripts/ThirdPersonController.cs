@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ThirdPersonController : MonoBehaviour
 {
-    //todo, clip camera movement if the camera would enter an object by moving
-    //camera can't move vertically through walls, but can move horizontally
+    //todo get movement working
+    //head and cannon will follow camera movement, body will move based on WASD input
 
     [SerializeField] float sphereRadius = 2f;
     [SerializeField] [Range(0f, 5f)] float horizontalSensitivity = 1f;
