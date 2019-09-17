@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ThirdPersonController : MonoBehaviour
 {
-    //todo get movement working
-    //head and cannon will follow camera movement, body will move based on WASD input
+    //todo stop camera from clipping into walls
 
-    //todo, add a horizontal max and min angle
+
+    //todo, fix problem with ramps
 
     [Header("Camera settings")]
     [SerializeField] float sphereRadius = 2f;
@@ -21,6 +21,7 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] GameObject tankHead;
     [SerializeField] GameObject tankBody;
     [SerializeField] float cannonOffsetAngle = 20f;
+    [SerializeField] float cannonRotateSpeed = 20f;
 
     [Header("Movement settings")]
     [SerializeField] float moveSpeed = 5f;
@@ -33,39 +34,87 @@ public class ThirdPersonController : MonoBehaviour
     bool onGround = false;
     bool againstWallForward = false;
     bool againstWallBackward = false;
+    float headAngle = 0f;
 
     void Start()
     {
         camera = Camera.main;
         initCameraPos = camera.transform.position;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         float rawVertical = Input.GetAxis("Vertical");
         float rawHorizontal = Input.GetAxis("Horizontal");
-        CameraStuff();
+        //RotateTankBody();
         RotateHeadAndCannon();
 
         Vector3 movement = new Vector3(0,0,rawVertical*moveSpeed*Time.deltaTime);
         transform.Translate(movement);
 
-        Vector3 rotation = new Vector3(0, rawHorizontal * rotateSpeed * Time.deltaTime, 0);
-        transform.Rotate(rotation);
+        transform.Rotate(transform.up, rotateSpeed * rawHorizontal * Time.deltaTime);
 
+        //Vector3 currRot = tankBody.transform.rotation.eulerAngles;
+        //currRot.x = 90;
+        //currRot.y = 0;
+        //bodyAngle += rawHorizontal * rotateSpeed * Time.deltaTime;
+        //currRot.z = bodyAngle;
+        //tankBody.transform.rotation = Quaternion.Euler(currRot);
     }
 
     private void RotateHeadAndCannon()
     {
-        float headAngle = sphereAngleY + 180;
+        float rawVertical = 0;
+        float rawHorizontal = 0;
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            rawHorizontal -= 1f;
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            rawHorizontal += 1f;
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            rawVertical += 1f;
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            rawVertical -= 1f;
+        }
+
+        headAngle += cannonRotateSpeed * rawHorizontal * Time.deltaTime;
         tankHead.transform.rotation = Quaternion.Euler(90, headAngle, 0);
 
-        float cannonAngle = -sphereAngleX - cannonOffsetAngle;
-        Quaternion oldRotation = cannon.transform.rotation;
-        Vector3 oldRotationVector = oldRotation.eulerAngles;
-        oldRotationVector.x = cannonAngle;
-        cannon.transform.rotation = Quaternion.Euler(oldRotationVector);
+        //float cannonAngle = -sphereAngleX - cannonOffsetAngle;
+        //Quaternion oldRotation = cannon.transform.rotation;
+        //Vector3 oldRotationVector = oldRotation.eulerAngles;
+        //oldRotationVector.x = cannonAngle;
+        //cannon.transform.rotation = Quaternion.Euler(oldRotationVector);
+    }
+
+    private void RotateTankBody() {
+        float rawVertical = 0;
+        float rawHorizontal = 0;
+
+        if (Input.GetKey(KeyCode.LeftArrow)) {
+            rawHorizontal -= 1f;
+        }
+        if (Input.GetKey(KeyCode.RightArrow)) {
+            rawHorizontal += 1f;
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow)) {
+            rawVertical += 1f;
+        }
+        if (Input.GetKey(KeyCode.DownArrow)) {
+            rawVertical -= 1f;
+        }
+
+        transform.Rotate(transform.up, rotateSpeed * rawHorizontal * Time.deltaTime);
     }
 
     private void CameraStuff()
