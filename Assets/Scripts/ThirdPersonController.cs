@@ -12,6 +12,7 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] [Range(0f, 5f)] float verticalSensitivity = 1f;
     [SerializeField] float maxVerticalAngle = 60f;
     [SerializeField] float minVerticalAngle = 60f;
+    [SerializeField] GameObject player;
     float sphereAngleX = 60f;
     float sphereAngleY = 180f;
     Camera camera;
@@ -32,13 +33,12 @@ public class ThirdPersonController : MonoBehaviour
         float rawMouseX = Input.GetAxis("Mouse X");
         float rawMouseY = Input.GetAxis("Mouse Y");
 
-        print("Mouse X: " + rawMouseX);
-        print("Mouse Y: " + rawMouseY);
-
         //using mouseX and mouseY, move the camera about a sphere around the player with radius sphereRadius
         Vector3 newPos = new Vector3();
+        Vector3 oldPos = camera.transform.position;
 
         float oldAngleX = sphereAngleX;
+        float oldAngleY = sphereAngleY;
 
         sphereAngleX -= rawMouseY * verticalSensitivity;
         sphereAngleY += rawMouseX * horizontalSensitivity;
@@ -71,6 +71,19 @@ public class ThirdPersonController : MonoBehaviour
         }
         camera.transform.position = newPos;
         camera.transform.rotation = Quaternion.Euler(angles);
+
+        //Debug.DrawLine(camera.transform.position, player.transform.position, Color.red);
+
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Linecast(oldPos, camera.transform.position, out hit)) {
+            camera.transform.position = oldPos;
+            //currently only just lets the camera into the ground
+            //so need to make the angle of the linecast slightly steeper
+
+            //also need to ignore downwards camera movement when camera is in this position
+
+            //Debug.DrawLine(camera.transform.position, hit.point, Color.blue);
+        }
     }
 
     private void OnDrawGizmosSelected()
