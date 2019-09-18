@@ -32,6 +32,7 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] float bulletSpeed;
     [SerializeField] float maxDistance = 5f;
     [SerializeField] float damage = 10f;
+    [SerializeField] int maxReflections = 2;
 
     float sphereAngleX = 60f;
     float sphereAngleY = 180f;
@@ -66,6 +67,7 @@ public class ThirdPersonController : MonoBehaviour
             newBullet.speed = bulletSpeed;
             newBullet.maxDistance = maxDistance;
             newBullet.damage = damage;
+            newBullet.maxReflections = maxReflections;
         }
 
     }
