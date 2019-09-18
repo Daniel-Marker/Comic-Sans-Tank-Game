@@ -45,6 +45,6 @@ public class EnemyHealth : MonoBehaviour
     }
 
     void UpdateHealthText() {
-        healthText.text = "HP: " + currentHealth + "/" + maxHealth;
+        healthText.text = currentHealth + "/" + maxHealth;
     }
 }
