@@ -70,6 +70,11 @@ public class ThirdPersonController : MonoBehaviour
             newBullet.maxReflections = maxReflections;
         }
 
+        Vector3 currRot = transform.rotation.eulerAngles;
+        currRot.x = 0;
+        currRot.z = 0;
+        transform.rotation = Quaternion.Euler(currRot);
+
     }
 
     private void RotateHeadAndCannon()

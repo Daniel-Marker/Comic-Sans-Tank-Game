@@ -1,6 +1,5 @@
 -Make walls transparent if they block the camera view and go back to normal after moving the camera
 -Make base code for enemies 
 -Code AI for stationary and moving tank
--Create code for bullets
--Fix bug with player movement where moving into a wall and then rotating body causes it to life up slightly
+-Fix reflection for bullets
 -Updated TextFaceCamera.cs so that the text appears above the head instead of to the side
