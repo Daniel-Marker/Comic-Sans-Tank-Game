@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     public int maxReflections = 2;
 
     int noOfReflections = 0;
+    float oldRotation = 0f;
 
     Vector3 initPos;
 
@@ -24,6 +25,10 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
+        if (noOfReflections == maxReflections) {
+            Destroy(gameObject);
+        }
+
         transform.Translate(-transform.forward * speed);
 
         if (Vector3.Distance(initPos, transform.position) >= maxDistance) {
@@ -53,22 +58,50 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                Vector3 currRot = transform.rotation.eulerAngles;
+                //RaycastHit hit;
+                //if (Physics.Linecast(transform.position, transform.right, out hit))
+                //{
+                //    Vector3 incomingVec = hit.point - transform.position;
+                //    speed = 0;
+                //    Vector3 reflectVec = Vector3.Reflect(incomingVec, hit.normal);
+                //    Debug.DrawRay(hit.point, reflectVec, Color.red, 20f);
 
-                print(currRot.y);
+                Vector3 currRot = transform.rotation.eulerAngles;
+                //print(hit.transform.rotation.eulerAngles.y);
+                //if (hit.transform.rotation.eulerAngles.z < 90 || hit.transform.rotation.eulerAngles.z > 270)
+                //{
+                //    print("Horizontal");
+                //    print(hit.transform.gameObject.name);
+                //}
+                //else
+                //{
+                //    print("Vertical");
+                //    print(hit.transform.gameObject.name);
+                //}
+                //print(currRot.y);
 
                 if (currRot.y < 90) currRot.y += 90f;
-                else if(currRot.y < 180) currRot.y -= 90f;
+                else if (currRot.y < 180) currRot.y -= 90f;
                 else if (currRot.y < 270) currRot.y += 90f;
                 else if (currRot.y < 360) currRot.y -= 90f;
 
                 transform.rotation = Quaternion.Euler(currRot);
+                noOfReflections++;
+                //}
             }
         }
 
         if (destroyWhenDone) {
             Destroy(gameObject);
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        Vector3 currRot = transform.rotation.eulerAngles;
+        currRot.y += 45/2f;
+        transform.rotation = Quaternion.Euler(currRot);
+        //can maybe get it to rotate correctly here (who knows)
     }
 
     private void OnDrawGizmosSelected()
