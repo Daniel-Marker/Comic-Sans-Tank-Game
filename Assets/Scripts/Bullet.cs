@@ -14,7 +14,8 @@ public class Bullet : MonoBehaviour
 
     Vector3 initPos;
 
-    //todo, add bullet reflections
+    //todo, fix reflections when at roughly 180 or 360
+    //reflections against horizontal walls work but not vertical walls
 
     private void Start()
     {
@@ -30,7 +31,6 @@ public class Bullet : MonoBehaviour
         }
 
         Debug.DrawRay(transform.position, transform.up, Color.green, 10f);
-        print(transform.up);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,41 +51,18 @@ public class Bullet : MonoBehaviour
                 health.DecreaseHealth(damage);
                 destroyWhenDone = true;
             }
-            else {
-                print("Collided with something that isn't the player or an enemy");
-                RaycastHit hit;
-                if (Physics.Linecast(transform.position, 0.2f*transform.up, out hit)) {
-                    //float theta = Mathf.Rad2Deg * Mathf.Atan2(hit.point.z - transform.position.z, hit.point.x - transform.position.x);
+            else
+            {
+                Vector3 currRot = transform.rotation.eulerAngles;
 
-                    //print("Transform x: " + transform.position.x);
-                    //print("Transform z: " + transform.position.z);
+                print(currRot.y);
 
-                    //print("hit x: " + hit.point.x);
-                    //print("hit x: " + hit.point.z);
+                if (currRot.y < 90) currRot.y += 90f;
+                else if(currRot.y < 180) currRot.y -= 90f;
+                else if (currRot.y < 270) currRot.y += 90f;
+                else if (currRot.y < 360) currRot.y -= 90f;
 
-                    //print("Theta: " + theta);
-
-                    //Vector3 currRot = transform.rotation.eulerAngles;
-                    //currRot.z = theta;
-
-                    //transform.rotation = Quaternion.Euler(currRot);
-                    //Debug.DrawLine(transform.position, hit.point);
-
-                    //transform.up = -Vector3.Reflect(transform.up, Vector3.right);
-
-                    //Vector2 direction = new Vector2();
-                    //direction.x = transform.up.x;
-                    //direction.y = transform.up.z;
-                    //direction = Vector2.Perpendicular(direction);
-                    ////direction = Vector2.Reflect(direction, hit.point);
-                    //transform.up = new Vector3(direction.x, 0, direction.y);
-
-                    //Debug.DrawRay(hit.point, transform.up);
-
-                    //Vector3 currRot = transform.rotation.eulerAngles;
-                    //currRot.x = 0;
-
-                }
+                transform.rotation = Quaternion.Euler(currRot);
             }
         }
 
