@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1180750035}
   m_Layer: 0
   m_Name: ThirdPersonController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +74,10 @@ MonoBehaviour:
   cannonRotateSpeed: 50
   moveSpeed: 5
   rotateSpeed: 50
+  bullet: {fileID: 5660044374166907329, guid: 3356731bcac191345a12eb19278b8a83, type: 3}
+  bulletSpeed: 0.2
+  maxDistance: 50
+  damage: 10
 --- !u!114 &1180750035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 0
+  healthText: {fileID: 0}
 --- !u!1 &1941996130184971960
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +226,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f3c91ca159f97cf4fb6769820fc22242,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: -1133720956572601739, guid: f3c91ca159f97cf4fb6769820fc22242,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876727404729954449, guid: f3c91ca159f97cf4fb6769820fc22242,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f3c91ca159f97cf4fb6769820fc22242,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -286,6 +306,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1c06a3fb35d1e9a4e98df27db8e75be6, type: 2}
+    - target: {fileID: -3993466820737894698, guid: f3c91ca159f97cf4fb6769820fc22242,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6552650783759237384, guid: f3c91ca159f97cf4fb6769820fc22242,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

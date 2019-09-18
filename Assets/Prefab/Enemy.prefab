@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4071497453322496602}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,6 +232,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f3c91ca159f97cf4fb6769820fc22242,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -1133720956572601739, guid: f3c91ca159f97cf4fb6769820fc22242,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876727404729954449, guid: f3c91ca159f97cf4fb6769820fc22242,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f3c91ca159f97cf4fb6769820fc22242,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -297,6 +312,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 126dafdb3e8986244a2a04d1999bbcbe, type: 2}
+    - target: {fileID: -3993466820737894698, guid: f3c91ca159f97cf4fb6769820fc22242,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6552650783759237384, guid: f3c91ca159f97cf4fb6769820fc22242,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

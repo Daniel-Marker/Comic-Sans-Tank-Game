@@ -27,6 +27,12 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float rotateSpeed = 5f;
 
+    [Header("Bullet settings")]
+    [SerializeField] Bullet bullet;
+    [SerializeField] float bulletSpeed;
+    [SerializeField] float maxDistance = 5f;
+    [SerializeField] float damage = 10f;
+
     float sphereAngleX = 60f;
     float sphereAngleY = 180f;
     Camera camera;
@@ -55,12 +61,13 @@ public class ThirdPersonController : MonoBehaviour
 
         transform.Rotate(transform.up, rotateSpeed * rawHorizontal * Time.deltaTime);
 
-        //Vector3 currRot = tankBody.transform.rotation.eulerAngles;
-        //currRot.x = 90;
-        //currRot.y = 0;
-        //bodyAngle += rawHorizontal * rotateSpeed * Time.deltaTime;
-        //currRot.z = bodyAngle;
-        //tankBody.transform.rotation = Quaternion.Euler(currRot);
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            var newBullet = Instantiate(bullet, cannon.transform.position + cannon.transform.up, cannon.transform.rotation);
+            newBullet.speed = bulletSpeed;
+            newBullet.maxDistance = maxDistance;
+            newBullet.damage = damage;
+        }
+
     }
 
     private void RotateHeadAndCannon()
