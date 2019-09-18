@@ -1,0 +1,6 @@
+-Make walls transparent if they block the camera view and go back to normal after moving the camera
+-Make base code for enemies 
+-Code AI for stationary and moving tank
+-Create code for bullets
+-Make enemy health rotate so that it is always facing the camera
+-Fix bug with player movement where moving into a wall and then rotating body causes it to life up slightly
