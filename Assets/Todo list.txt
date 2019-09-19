@@ -1,5 +1,3 @@
--Have levels have a short delay before starting (maybe show a countdown?)
--Fix bug where tank faces wrong direction at start of level 
 -Ending?
 -Final level
 
