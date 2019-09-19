@@ -99,7 +99,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         Vector3 currRot = transform.rotation.eulerAngles;
-        currRot.y += 45/2f;
+        //need to either add or sub based on direction of travel
+        //todo change offset based on direction of travel
+        currRot.y -= 45/2f;
         transform.rotation = Quaternion.Euler(currRot);
         //can maybe get it to rotate correctly here (who knows)
     }
