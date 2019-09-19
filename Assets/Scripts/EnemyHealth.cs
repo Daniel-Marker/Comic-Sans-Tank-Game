@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] TextMesh healthText;
     [SerializeField] GameObject deathFx;
     float currentHealth;
+    bool dead = false;
 
     private void Start()
     {
@@ -22,7 +23,11 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            HandleEnemyDeath();
+            if (!dead)
+            {
+                HandleEnemyDeath();
+                dead = true;
+            }
         }
 
         UpdateHealthText();
@@ -42,6 +47,8 @@ public class EnemyHealth : MonoBehaviour
 
     private void HandleEnemyDeath()
     {
+        FindObjectOfType<Teleporter>().EnemyDeath();
+
         var explosion = Instantiate(deathFx, transform.position + Vector3.up, Quaternion.identity);
         Destroy(explosion, 2f);
         Destroy(gameObject);

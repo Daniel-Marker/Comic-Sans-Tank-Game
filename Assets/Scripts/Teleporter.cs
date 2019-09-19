@@ -4,36 +4,40 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
     {
-        public Teleporter destination;
+    [SerializeField] float waitTime = 2f;
+    [SerializeField] GameObject teleporterDoor;
+    [SerializeField] int noOfEnemies;
+    int enemiesLeft;
 
         bool active = true;
 
-        void OnTriggerEnter(Collider other)
+    private void Start()
+    {
+        enemiesLeft = noOfEnemies;
+    }
+
+    public void EnemyDeath() {
+        enemiesLeft--;
+
+        if (enemiesLeft == 0)
+        {
+            MoveDoor();
+        }
+    }
+
+    private void MoveDoor()
+    {
+        teleporterDoor.SetActive(false);
+    }
+
+    void OnTriggerEnter(Collider other)
         {
             if (active == true)
             {
                 if (other.tag == "Player")
                 {
-                    destination.active = false;
-                    other.transform.position = destination.transform.position;
+                FindObjectOfType<LevelManager>().NextLevel(waitTime);
                 }
             }
         }
-        void OnTriggerExit(Collider other)
-        {
-            if (other.tag == "Player")
-            {
-                active = true;
-            }
-        }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4071497453322496602}
   - component: {fileID: 5360538849261159647}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Stationary Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881525e7c649874469467415d0260c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 1
+  enemyType: 0
   timeBetweenShots: 2
   cannon: {fileID: 9100852768628281364}
   tankHead: {fileID: 7446339395807385171}

@@ -43,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
         Destroy(explosion, 2f);
         Camera.main.transform.parent = null;
         Destroy(gameObject);
+        FindObjectOfType<LevelManager>().RestartLevel(2f);
     }
 
     private void UpdateHealthText() {

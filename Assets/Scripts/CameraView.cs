@@ -13,10 +13,14 @@ public class CameraView : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
-        Debug.DrawLine(transform.position, player.GetTankHead().transform.position, Color.red);
-        if (Physics.Linecast(transform.position, 0.2f *(transform.position- player.GetTankHead().transform.position) + player.GetTankHead().transform.position, out hit)) {
-            hit.transform.gameObject.GetComponent<Wall>().BecomeTransparent();
+        if (player)
+        {
+            RaycastHit hit;
+            Debug.DrawLine(transform.position, player.GetTankHead().transform.position, Color.red);
+            if (Physics.Linecast(transform.position, 0.2f * (transform.position - player.GetTankHead().transform.position) + player.GetTankHead().transform.position, out hit))
+            {
+                hit.transform.gameObject.GetComponent<Wall>().BecomeTransparent();
+            }
         }
     }
 }
