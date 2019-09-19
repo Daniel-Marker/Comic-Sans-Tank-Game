@@ -68,6 +68,11 @@ MonoBehaviour:
   cannon: {fileID: 9100852768628281364}
   tankHead: {fileID: 7446339395807385171}
   tankBody: {fileID: 5088175332384642231}
+  bullet: {fileID: 5660044374166907329, guid: 3356731bcac191345a12eb19278b8a83, type: 3}
+  bulletSpeed: 0.2
+  maxDistance: 50
+  damage: 10
+  maxReflections: 2
 --- !u!114 &4071497453322496602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +312,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3993466820737894698, guid: f3c91ca159f97cf4fb6769820fc22242,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7761364059519296388, guid: f3c91ca159f97cf4fb6769820fc22242,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -317,11 +327,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 126dafdb3e8986244a2a04d1999bbcbe, type: 2}
-    - target: {fileID: -3993466820737894698, guid: f3c91ca159f97cf4fb6769820fc22242,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 6552650783759237384, guid: f3c91ca159f97cf4fb6769820fc22242,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
