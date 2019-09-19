@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -23,11 +24,14 @@ public class EnemyAI : MonoBehaviour
     ThirdPersonController player;
     float prevTime;
     float oldTime;
+    NavMeshAgent agent;
+
 
     void Start()
     {
         player = FindObjectOfType<ThirdPersonController>();
         oldTime = Time.time;
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -49,19 +53,28 @@ public class EnemyAI : MonoBehaviour
     {
         switch (enemyType) {
             case EnemyType.stationary:
-                prevTime = Time.time;
-                if (prevTime - oldTime >= timeBetweenShots && !Physics.Linecast(transform.position,player.transform.position)) {
-                    var newBullet = Instantiate(bullet, cannon.transform.position + cannon.transform.up, cannon.transform.rotation);
-                    newBullet.speed = bulletSpeed;
-                    newBullet.maxDistance = maxDistance;
-                    newBullet.damage = damage;
-                    newBullet.maxReflections = maxReflections;
-                    oldTime = prevTime;
-                }
+                ShootAtPlayer();
+                Destroy(agent);
+                break;
 
-                break;
             case EnemyType.basic:
+                ShootAtPlayer();
+                agent.SetDestination(player.transform.position + Vector3.forward*2);
                 break;
+        }
+    }
+
+    private void ShootAtPlayer()
+    {
+        prevTime = Time.time;
+        if (prevTime - oldTime >= timeBetweenShots && !Physics.Linecast(transform.position, player.transform.position))
+        {
+            var newBullet = Instantiate(bullet, cannon.transform.position + cannon.transform.up, cannon.transform.rotation);
+            newBullet.speed = bulletSpeed;
+            newBullet.maxDistance = maxDistance;
+            newBullet.damage = damage;
+            newBullet.maxReflections = maxReflections;
+            oldTime = prevTime;
         }
     }
 }
