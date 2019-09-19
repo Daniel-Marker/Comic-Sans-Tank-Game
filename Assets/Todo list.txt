@@ -2,5 +2,6 @@
 -Make base code for enemies 
 -Code AI for stationary and moving tank
 
+-Fix problem where camera is jittery when rotating body
 -Fix reflection for bullets
 -Updated TextFaceCamera.cs so that the text appears above the head instead of to the side

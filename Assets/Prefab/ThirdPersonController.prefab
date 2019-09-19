@@ -78,6 +78,7 @@ MonoBehaviour:
   bulletSpeed: 0.2
   maxDistance: 50
   damage: 10
+  maxReflections: 2
 --- !u!114 &1180750035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,12 +301,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1c06a3fb35d1e9a4e98df27db8e75be6, type: 2}
+      objectReference: {fileID: 2100000, guid: dd4d5ca8f904d8c4884872703d30ff59, type: 2}
     - target: {fileID: -2668890147834376428, guid: f3c91ca159f97cf4fb6769820fc22242,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1c06a3fb35d1e9a4e98df27db8e75be6, type: 2}
+      objectReference: {fileID: 2100000, guid: adafb71e3c3b8dc4db30d87ab2a3b1ae, type: 2}
     - target: {fileID: -3993466820737894698, guid: f3c91ca159f97cf4fb6769820fc22242,
         type: 3}
       propertyPath: m_TagString
@@ -315,7 +316,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1c06a3fb35d1e9a4e98df27db8e75be6, type: 2}
+      objectReference: {fileID: 2100000, guid: e94794f373e81224aa14503ab78b8758, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3c91ca159f97cf4fb6769820fc22242, type: 3}
 --- !u!4 &8332317389236096472 stripped
