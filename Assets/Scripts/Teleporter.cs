@@ -9,7 +9,8 @@ public class Teleporter : MonoBehaviour
     [SerializeField] float waitTime = 2f;
     [SerializeField] GameObject teleporterDoor;
     [SerializeField] int noOfEnemies;
-    int enemiesLeft;
+    [SerializeField] Text thanksForPlaying;
+    [SerializeField] int enemiesLeft;
 
         bool active = true;
 
@@ -25,7 +26,7 @@ public class Teleporter : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "Boss")
             {
-                FindObjectOfType<LevelManager>().NextLevel(waitTime);
+                thanksForPlaying.enabled = true;
             }
             else {
                 MoveDoor();
@@ -39,9 +40,10 @@ public class Teleporter : MonoBehaviour
     {
         if (enemiesLeft == 0)
         {
-            if (SceneManager.GetActiveScene().name == "Boss")
+            //print(SceneManager.GetActiveScene().name);
+            if (SceneManager.GetActiveScene().buildIndex == 3)
             {
-                FindObjectOfType<LevelManager>().NextLevel(waitTime);
+                thanksForPlaying.gameObject.active = true;
             }
 
 
