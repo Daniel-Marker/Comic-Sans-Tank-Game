@@ -43,6 +43,10 @@ public class ThirdPersonController : MonoBehaviour
     bool againstWallBackward = false;
     float headAngle = 0f;
 
+    public GameObject GetTankHead() {
+        return tankHead;
+    }
+
     void Start()
     {
         camera = Camera.main;
