@@ -63,6 +63,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881525e7c649874469467415d0260c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
+  timeBetweenShots: 2
+  cannon: {fileID: 9100852768628281364}
+  tankHead: {fileID: 7446339395807385171}
+  tankBody: {fileID: 5088175332384642231}
 --- !u!114 &4071497453322496602
 MonoBehaviour:
   m_ObjectHideFlags: 0
