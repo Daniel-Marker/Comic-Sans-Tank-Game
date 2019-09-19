@@ -2080,7 +2080,7 @@ PrefabInstance:
     - target: {fileID: 1941996130125398090, guid: 28a31468955ca6d4f8b2c6cb0311ca7c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1941996130125398090, guid: 28a31468955ca6d4f8b2c6cb0311ca7c,
         type: 3}
@@ -2090,7 +2090,7 @@ PrefabInstance:
     - target: {fileID: 1941996130125398090, guid: 28a31468955ca6d4f8b2c6cb0311ca7c,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1941996130125398090, guid: 28a31468955ca6d4f8b2c6cb0311ca7c,
         type: 3}
@@ -2105,7 +2105,7 @@ PrefabInstance:
     - target: {fileID: 1941996130125398090, guid: 28a31468955ca6d4f8b2c6cb0311ca7c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1941996130125398090, guid: 28a31468955ca6d4f8b2c6cb0311ca7c,
         type: 3}
@@ -2116,6 +2116,10 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 188669990}
+    - target: {fileID: 2113528661, guid: 28a31468955ca6d4f8b2c6cb0311ca7c, type: 3}
+      propertyPath: headAngle
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a31468955ca6d4f8b2c6cb0311ca7c, type: 3}
 --- !u!1 &1775337358

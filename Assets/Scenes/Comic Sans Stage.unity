@@ -839,6 +839,10 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 169135098}
+    - target: {fileID: 2113528661, guid: 28a31468955ca6d4f8b2c6cb0311ca7c, type: 3}
+      propertyPath: headAngle
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a31468955ca6d4f8b2c6cb0311ca7c, type: 3}
 --- !u!1 &608614940

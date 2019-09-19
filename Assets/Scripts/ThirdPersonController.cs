@@ -41,7 +41,7 @@ public class ThirdPersonController : MonoBehaviour
     bool onGround = false;
     bool againstWallForward = false;
     bool againstWallBackward = false;
-    float headAngle = 180f;
+    [SerializeField] float headAngle = 180f;
 
     public GameObject GetTankHead() {
         return tankHead;
