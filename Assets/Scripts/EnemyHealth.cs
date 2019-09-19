@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float maxHealth;
     [SerializeField] TextMesh healthText;
+    [SerializeField] GameObject deathFx;
     float currentHealth;
 
     private void Start()
@@ -19,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= amount;
 
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             HandleEnemyDeath();
         }
@@ -41,7 +42,9 @@ public class EnemyHealth : MonoBehaviour
 
     private void HandleEnemyDeath()
     {
-        print(gameObject.name + " has died");
+        var explosion = Instantiate(deathFx, transform.position + Vector3.up, Quaternion.identity);
+        Destroy(explosion, 2f);
+        Destroy(gameObject);
     }
 
     void UpdateHealthText() {

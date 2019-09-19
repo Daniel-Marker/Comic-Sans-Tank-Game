@@ -36,17 +36,20 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (!Physics.Linecast(transform.position, player.transform.position))
+        if (player)
         {
-            tankHead.transform.up = player.transform.position - transform.position;
-            tankHead.transform.rotation = Quaternion.LookRotation(player.transform.position - transform.position);
-            Vector3 currRot = tankHead.transform.rotation.eulerAngles;
-            currRot.x += 90f;
-            currRot.z = 0;
-            tankHead.transform.rotation = Quaternion.Euler(currRot);
-        }
+            if (!Physics.Linecast(transform.position, player.transform.position))
+            {
+                tankHead.transform.up = player.transform.position - transform.position;
+                tankHead.transform.rotation = Quaternion.LookRotation(player.transform.position - transform.position);
+                Vector3 currRot = tankHead.transform.rotation.eulerAngles;
+                currRot.x += 90f;
+                currRot.z = 0;
+                tankHead.transform.rotation = Quaternion.Euler(currRot);
+            }
 
-        TankAI();
+            TankAI();
+        }
     }
 
     private void TankAI()

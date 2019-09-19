@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] float maxHealth;
     [SerializeField] Text healthText;
+    [SerializeField] GameObject deathFx;
     float currentHealth;
 
     private void Start()
@@ -18,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     public void DecreaseHealth(float amount) {
         currentHealth -= amount;
 
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             HandlePlayerDeath();
         }
@@ -38,7 +39,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void HandlePlayerDeath()
     {
-        print("Dead");
+        var explosion = Instantiate(deathFx,transform.position + Vector3.up,Quaternion.identity);
+        Destroy(explosion, 2f);
+        Camera.main.transform.parent = null;
+        Destroy(gameObject);
     }
 
     private void UpdateHealthText() {
