@@ -78,7 +78,7 @@ MonoBehaviour:
   bulletSpeed: 0.2
   maxDistance: 50
   damage: 10
-  maxReflections: 2
+  maxReflections: 3
 --- !u!114 &1180750035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,8 +91,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d0da77e8f5b584a91c43d0bc798deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 100
   healthText: {fileID: 0}
+  deathFx: {fileID: 7405369092180423037, guid: 4a659012b296c8841b9fa23ff0b0a750, type: 3}
 --- !u!1 &1941996130184971960
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +105,7 @@ GameObject:
   - component: {fileID: 1941996130184971963}
   - component: {fileID: 1941996130184971957}
   - component: {fileID: 1941996130184971962}
+  - component: {fileID: 1102659276}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -176,6 +178,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941996130184971960}
   m_Enabled: 1
+--- !u!114 &1102659276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941996130184971960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5358e0af2911b4e946d4ecc32496c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1081513737
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -73,7 +73,7 @@ MonoBehaviour:
   bulletSpeed: 0.2
   maxDistance: 50
   damage: 10
-  maxReflections: 2
+  maxReflections: 3
 --- !u!114 &4071497453322496602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,8 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1004df842f0f21e498d2e884236c0026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 250
+  maxHealth: 100
   healthText: {fileID: 5465376247822409997}
+  deathFx: {fileID: 7405369092180423037, guid: 4a659012b296c8841b9fa23ff0b0a750, type: 3}
 --- !u!195 &5360538849261159647
 NavMeshAgent:
   m_ObjectHideFlags: 0
