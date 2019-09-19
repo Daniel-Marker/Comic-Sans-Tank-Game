@@ -1,8 +1,7 @@
--On player death, after a delay restart the level
--Sort level transition with teleporters
 -Have levels have a short delay before starting (maybe show a countdown?)
 -Fix bug where tank faces wrong direction at start of level 
 -Ending?
+-Final level
 
 -Fix problem where camera is jittery when rotating body
 -Fix reflection for bullets

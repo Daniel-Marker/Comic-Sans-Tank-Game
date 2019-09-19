@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Teleporter : MonoBehaviour
     {
@@ -28,6 +29,20 @@ public class Teleporter : MonoBehaviour
     private void MoveDoor()
     {
         teleporterDoor.SetActive(false);
+        StartCoroutine(DoorTextFunc());
+    }
+
+    IEnumerator DoorTextFunc()
+    {
+        var UI = GameObject.Find("UI");
+        var DoorText = UI.transform.FindChild("DoorText");
+        DoorText.gameObject.SetActive(true);
+        var text = DoorText.GetComponent<Text>();
+        text.canvasRenderer.SetAlpha(0f);
+        text.CrossFadeAlpha(1f, 2f, false);
+        yield return new WaitForSeconds(2f);
+        text.CrossFadeAlpha(0f, 2f, false);
+
     }
 
     void OnTriggerEnter(Collider other)
