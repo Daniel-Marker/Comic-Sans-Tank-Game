@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Teleporter : MonoBehaviour
     {
@@ -22,7 +23,28 @@ public class Teleporter : MonoBehaviour
 
         if (enemiesLeft == 0)
         {
-            MoveDoor();
+            if (SceneManager.GetActiveScene().name == "Boss")
+            {
+                FindObjectOfType<LevelManager>().NextLevel(waitTime);
+            }
+            else {
+                MoveDoor();
+            }
+
+           
+        }
+    }
+
+    private void Update()
+    {
+        if (enemiesLeft == 0)
+        {
+            if (SceneManager.GetActiveScene().name == "Boss")
+            {
+                FindObjectOfType<LevelManager>().NextLevel(waitTime);
+            }
+
+
         }
     }
 

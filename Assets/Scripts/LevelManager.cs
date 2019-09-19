@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        currentLevel = SceneManager.GetActiveScene().buildIndex;
+
         SceneManager.sceneLoaded += OnSceneLoaded;
         int numLevelManagers = FindObjectsOfType<LevelManager>().Length;
         if (numLevelManagers > 1)
