@@ -16,7 +16,6 @@ public class CameraView : MonoBehaviour
         RaycastHit hit;
         Debug.DrawLine(transform.position, player.GetTankHead().transform.position, Color.red);
         if (Physics.Linecast(transform.position, 0.2f *(transform.position- player.GetTankHead().transform.position) + player.GetTankHead().transform.position, out hit)) {
-            print(hit.transform.gameObject.name);
             hit.transform.gameObject.GetComponent<Wall>().BecomeTransparent();
         }
     }

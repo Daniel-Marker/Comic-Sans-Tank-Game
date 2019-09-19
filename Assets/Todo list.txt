@@ -1,5 +1,6 @@
--Make walls transparent if they block the camera view and go back to normal after moving the camera
 -On player death, after a delay restart the level 
+-Get levels from Dan
+-Ending?
 
 -Fix problem where camera is jittery when rotating body
 -Fix reflection for bullets
