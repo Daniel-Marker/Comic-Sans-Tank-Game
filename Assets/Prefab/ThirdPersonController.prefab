@@ -71,7 +71,7 @@ MonoBehaviour:
   tankHead: {fileID: 7446339395807385171}
   tankBody: {fileID: 5088175332384642231}
   cannonOffsetAngle: 20
-  cannonRotateSpeed: 50
+  cannonRotateSpeed: 95
   moveSpeed: 5
   rotateSpeed: 50
   bullet: {fileID: 5660044374166907329, guid: 3356731bcac191345a12eb19278b8a83, type: 3}
@@ -79,6 +79,7 @@ MonoBehaviour:
   maxDistance: 50
   damage: 10
   maxReflections: 3
+  headAngle: 180
 --- !u!114 &1180750035
 MonoBehaviour:
   m_ObjectHideFlags: 0
