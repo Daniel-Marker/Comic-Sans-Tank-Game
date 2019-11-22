@@ -15,9 +15,6 @@ public class Bullet : MonoBehaviour
 
     Vector3 initPos;
 
-    //todo, fix reflections when at roughly 180 or 360
-    //reflections against horizontal walls work but not vertical walls
-
     private void Start()
     {
         initPos = transform.position;
@@ -58,27 +55,7 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                //RaycastHit hit;
-                //if (Physics.Linecast(transform.position, transform.right, out hit))
-                //{
-                //    Vector3 incomingVec = hit.point - transform.position;
-                //    speed = 0;
-                //    Vector3 reflectVec = Vector3.Reflect(incomingVec, hit.normal);
-                //    Debug.DrawRay(hit.point, reflectVec, Color.red, 20f);
-
                 Vector3 currRot = transform.rotation.eulerAngles;
-                //print(hit.transform.rotation.eulerAngles.y);
-                //if (hit.transform.rotation.eulerAngles.z < 90 || hit.transform.rotation.eulerAngles.z > 270)
-                //{
-                //    print("Horizontal");
-                //    print(hit.transform.gameObject.name);
-                //}
-                //else
-                //{
-                //    print("Vertical");
-                //    print(hit.transform.gameObject.name);
-                //}
-                //print(currRot.y);
 
                 if (currRot.y < 90) currRot.y += 90f;
                 else if (currRot.y < 180) currRot.y -= 90f;
@@ -87,7 +64,6 @@ public class Bullet : MonoBehaviour
 
                 transform.rotation = Quaternion.Euler(currRot);
                 noOfReflections++;
-                //}
             }
         }
 
@@ -99,11 +75,8 @@ public class Bullet : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         Vector3 currRot = transform.rotation.eulerAngles;
-        //need to either add or sub based on direction of travel
-        //todo change offset based on direction of travel
         currRot.y -= 45/2f;
         transform.rotation = Quaternion.Euler(currRot);
-        //can maybe get it to rotate correctly here (who knows)
     }
 
     private void OnDrawGizmosSelected()

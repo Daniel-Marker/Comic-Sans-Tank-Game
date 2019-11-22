@@ -40,7 +40,6 @@ public class Teleporter : MonoBehaviour
     {
         if (enemiesLeft == 0)
         {
-            //print(SceneManager.GetActiveScene().name);
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
                 thanksForPlaying.gameObject.active = true;

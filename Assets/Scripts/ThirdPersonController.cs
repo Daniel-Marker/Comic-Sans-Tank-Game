@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class ThirdPersonController : MonoBehaviour
 {
-    //todo stop camera from clipping into walls
-
-
-    //todo, fix problem with ramps
-
     [Header("Camera settings")]
     [SerializeField] float sphereRadius = 2f;
     [SerializeField] [Range(0f, 5f)] float horizontalSensitivity = 1f;
@@ -51,14 +46,12 @@ public class ThirdPersonController : MonoBehaviour
     {
         camera = Camera.main;
         initCameraPos = camera.transform.position;
-        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         float rawVertical = Input.GetAxis("Vertical");
         float rawHorizontal = Input.GetAxis("Horizontal");
-        //RotateTankBody();
         RotateHeadAndCannon();
 
         Vector3 movement = new Vector3(0,0,rawVertical*moveSpeed*Time.deltaTime);
@@ -106,12 +99,6 @@ public class ThirdPersonController : MonoBehaviour
 
         headAngle += cannonRotateSpeed * rawHorizontal * Time.deltaTime;
         tankHead.transform.rotation = Quaternion.Euler(90, headAngle, 0);
-
-        //float cannonAngle = -sphereAngleX - cannonOffsetAngle;
-        //Quaternion oldRotation = cannon.transform.rotation;
-        //Vector3 oldRotationVector = oldRotation.eulerAngles;
-        //oldRotationVector.x = cannonAngle;
-        //cannon.transform.rotation = Quaternion.Euler(oldRotationVector);
     }
 
     private void RotateTankBody() {
@@ -184,7 +171,6 @@ public class ThirdPersonController : MonoBehaviour
             }
         }
 
-        //using mouseX and mouseY, move the camera about a sphere around the player with radius sphereRadius
         Vector3 newPos = new Vector3();
         Vector3 oldPos = camera.transform.position;
 
