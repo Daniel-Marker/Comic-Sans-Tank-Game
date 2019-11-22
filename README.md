@@ -8,7 +8,7 @@ The game itself is contained within FinalBuild.zip and only needs to be unzipped
 ### Using the project files
 The project was written in version 2019.1.3f1 of Unity, so if you want to use the project files I would recommend using that version of Unity.
 
-## Authors
+### Authors
 
 * **Daniel Marker** - *Programming* 
 * **Dan Arrowsmith** - *Level design*
