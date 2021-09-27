@@ -10,6 +10,6 @@ The project was written in version 2019.1.3f1 of Unity, so if you want to use th
 
 ### Authors
 
-* **Daniel Marker** - *Programming* 
+* **Jade Marker** - *Programming* 
 * **Dan Arrowsmith** - *Level design*
 * **Brandon Hacking** - *Level design*
